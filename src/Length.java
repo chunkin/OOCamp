@@ -8,7 +8,7 @@ public class Length {
 
     protected String unit;
 
-    public Length(double length,String unit) {
+    protected Length(double length,String unit) {
         this.value = length;
         this.unit = unit;
     }

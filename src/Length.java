@@ -1,34 +1,19 @@
 public class Length {
-    protected double value;
-    protected static final String meter = new String("meter");
-    protected static final String decimeter =new String("decimeter");
-    protected static final String centimeter =new String("centimeter");
-    protected static final double factor_d2m = 0.1;
-    protected static final double factor_c2m = 0.01;
+    private double value;
+    private Unit unit;
 
-
-
-    protected String unit;
-
-    public  Length(double length,String unit) {
+    public  Length(double length, Unit unit) {
         this.value = length;
         this.unit = unit;
     }
 
     public Length add(Length l){
-       return new Length(this.toMeter().value + l.toMeter().value,meter);
-
-
+       return new Length(this.toMeter().value + l.toMeter().value,Unit.Meter);
     }
-
 
     private Length toMeter(){
-        if(decimeter.equals(unit)) return new Length(value * factor_d2m,meter);
-        if(centimeter.equals(unit)) return new Length(value * factor_c2m,meter);
-
-        return this;
+        return new Length(value*unit.Factor(),Unit.Meter);
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -51,3 +36,19 @@ public class Length {
         return result;
     }
 }
+
+ enum Unit{
+     Meter(1),
+     Decimeter(0.1),
+     Centimeter(0.01);
+
+     private double factor;
+
+     Unit(double factor) {
+         this.factor = factor;
+     }
+
+     public double Factor(){
+         return factor;
+     }
+ }

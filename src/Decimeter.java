@@ -1,10 +1,9 @@
-public class Decimeter {
+public class Decimeter extends Length {
     private double decimeter_2_meter =0.1;
 
-    private double value;
 
     public Decimeter(double value) {
-        this.value = value;
+        super(value,"decimeter");
     }
 
 
@@ -21,21 +20,5 @@ public class Decimeter {
         return new Decimeter(d.value + this.value);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Decimeter decimeter = (Decimeter) o;
-
-        if (Double.compare(decimeter.value, value) != 0) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        long temp = value != +0.0d ? Double.doubleToLongBits(value) : 0L;
-        return (int) (temp ^ (temp >>> 32));
-    }
 }

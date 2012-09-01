@@ -53,5 +53,26 @@ public void testMeterEquals() {
         assertEquals(new Length(2.1, Length.meter),d1.add(m2));
     }
 
+    @Test
+    public void test_1cm_add_2cm_eq_3cm() throws Exception {
+        Length cm1 = new Length(1, Length.centimeter);
+        Length cm2 = new Length(2, Length.centimeter);
+        assertEquals(new Length(3,Length.centimeter),cm1.add(cm2));
 
+
+    }
+
+    @Test
+    public void test_1cm_add_1dm_eq_11cm() throws Exception {
+        Length cm1 = new Length(1, Length.centimeter);
+        Length cm2 = new Length(1, Length.decimeter);
+        assertEquals(new Length(11,Length.centimeter),cm1.add(cm2));
+    }
+
+    @Test
+    public void test_1cm_add_1m_eq_101cm() throws Exception {
+        Length cm1 = new Length(1, Length.centimeter);
+        Length cm2 = new Length(1, Length.meter);
+        assertEquals(new Length(101,Length.centimeter),cm1.add(cm2));
+    }
 }
